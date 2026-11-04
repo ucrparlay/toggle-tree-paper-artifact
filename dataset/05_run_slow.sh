@@ -1,0 +1,6 @@
+(cd ../benchmarks/wBFS/Ours-IS && bash ./bench.sh)
+(cd ../benchmarks/wBFS/Ours-IM && bash ./bench.sh)
+(cd ../benchmarks/wBFS/GBBS && bash ./bench.sh)
+(cd ../benchmarks/BellmanFord/Ours && bash ./bench.sh)
+(cd ../benchmarks/BellmanFord/Hashbag && bash ./bench.sh)
+(cd ../benchmarks/BellmanFord/GBBS && bash ./bench.sh)

@@ -1,0 +1,10 @@
+test
+*.csv
+!sources.csv
+*.txt
+!CMakeLists.txt
+.codex
+.agents
+*.pdf
+__pycache__
+.venv/

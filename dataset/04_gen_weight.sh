@@ -1,0 +1,1 @@
+(cd generate_weight && bash ./generate.sh -1 && cd ..)

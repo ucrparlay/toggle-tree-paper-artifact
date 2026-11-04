@@ -1,0 +1,4 @@
+Vendored from: https://github.com/sbeamer/gapbs
+Commit: b5e3e19c2845f22fb338f4a4bc4b1ccee861d026
+
+Only modified graph loader, source picking and output to match the other libraries' benchmarks.

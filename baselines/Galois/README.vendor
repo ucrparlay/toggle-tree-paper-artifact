@@ -1,0 +1,4 @@
+Vendored from: https://github.com/intelligentsoftwaresystems/galois
+Commit: b67f94206a8c47fd414446621f6633a31c49fd98
+
+Only modified graph loader, source picking and output to match the other libraries' benchmarks.

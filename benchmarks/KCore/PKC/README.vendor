@@ -1,0 +1,11 @@
+Vendored from: https://github.com/humayunk1/PKC
+Commit: 91b78f443b47c2e339cabf480f786a530a61a9f1
+
+Changes w.r.t. upstream pkc.c:
+- Graph loader reads our .bin (CSR) format and copies offsets/edges as-is in parallel
+  (load_graph_from_binary). Adjacency lists in the .bin files are already sorted, so no sorting.
+- eid_t (edge offsets) is 64-bit (upstream: unsigned int), so graphs with more than 2^32 edges load;
+  the small-graph edge counters in PKC() use eid_t accordingly.
+- PKC() / PKC_org() allocate and return the core-number array, so the timed region includes the output
+  allocation, as for the other implementations.
+- frac, BUFF_MULT_FACTOR, BUFF_ACCESS_ASSERTS and NUM_THREADS keep their upstream values.
