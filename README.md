@@ -8,13 +8,29 @@ that run the experiments and redraw the paper's figures.
 
 | Figure / table in the paper | Produced by | Output file |
 |---|---|---|
-| Main comparison: running time of all baselines relative to ours, with geometric means per graph category | `03_run_fast.sh`, `05_run_slow.sh` | `dataset/main_exp.pdf` |
-| Comparison with the hash bag (same algorithms, only the frontier data structure replaced) | same data as above | `dataset/main_exp_hashbag.pdf` |
-| Self-relative speedup of ours, GBBS and PASGAL | `06_speedup.sh` | `dataset/speedup.pdf` |
+| Fig. 3 (raw data in Tab. 4): running time of all baselines relative to ours, with geometric means per graph category | `03_run_fast.sh`, `05_run_slow.sh` | `dataset/main_exp.pdf` |
+| Tab. 3 and Fig. 6 (raw data in Tab. 5): comparison with the hash bag (same algorithms, only the frontier data structure replaced) | same data as above | `dataset/main_exp_hashbag.pdf` |
+| Fig. 5: self-relative speedup of ours, GBBS and PASGAL | `06_speedup.sh` | `dataset/speedup.pdf` |
+
+Figure and table numbers refer to the paper PDF submitted with this artifact.
+Fig. 4 (per-round running time of the hash bag and the toggle tree) is a
+diagnostic study based on instrumented runs and is not part of this artifact.
+
+## Changes in the submitted paper
+
+The paper PDF submitted for artifact evaluation differs from the originally
+submitted version as follows:
+
+- We fixed the independence of the random edge-weight function (xor → min/max), chose sources from the largest connected component,
+  and re-ran all experiments.
+- The supplemental material was merged into the paper as Appendices A–F.
 
 ## Requirements
 
-Note: We are able to privide you a machine that satisfies all the following needs. Contact us if you failed in reproducing the data.
+Note: We can provide access to a machine that satisfies all the following
+requirements. Please request access through the AE chairs, who will forward
+the credentials, so that evaluators remain anonymous. The same applies if you
+cannot reproduce the data on your own machine.
 
 Hard requirements (nothing runs without them):
 
@@ -114,8 +130,9 @@ the ClueWeb12 web graph published by the Laboratory for Web Algorithmics
 compressed WebGraph format (about 12 GB), and the host of the other graphs,
 pasgal-bs.cs.ucr.edu, does not carry it. Running on it needs more than 1.5 TB of memory, and takes around another 5 hours.
 
-If you want to evaluate this graph, contact us: we can provide access to a machine
-that has the converted files and have sufficient memory.
+If you want to evaluate this graph, please request access through the AE
+chairs: we can provide access to a machine that has the converted files and
+sufficient memory.
 
 ## Reusing and adapting the artifact
 
@@ -137,7 +154,7 @@ scheduler, so `PARLAY_NUM_THREADS=16 bash ./bench.sh` runs on 16 threads
 (`06_speedup.sh` does exactly this). Number of timed rounds: `NUM_ROUNDS` in
 `config.sh`. Sources: edit `sources.csv` or regenerate it with
 `generate_source/generate.sh`. Edge weights: the default `generate_weight/generate.sh -1` draws integer
-weights uniformly from [1, log2 *n*] (the `wghlog` suffix); `generate.sh R`
+weights uniformly from [1, ⌊log2 *n*⌋ + 1] (the `wghlog` suffix); `generate.sh R`
 draws them from [1, 2^*R*] instead.
 Cache clearing: `CLEAR_CACHE=false`. Compiler: `CXX` in `config.sh`.
 
@@ -161,6 +178,18 @@ baselines/              vendored baselines: GBBS, PASGAL, GAPBS, Galois, ParlayL
 dataset/                configuration, experiment scripts, figure scripts, sources.csv
 run_all.sh              runs every step in order
 ```
+
+## Archival version (DOI)
+
+The permanent archival record of this artifact is
+[10.5281/zenodo.24042824](https://doi.org/10.5281/zenodo.24042824).
+It is archived from a separate repository, which differs from this one:
+
+- **Archived repository (DOI):** contains only the header-only toggle tree
+  library. It is developed entirely on the C++20 standard library and has no required third-party dependencies (ParlayLib can optionally be used as the scheduler).
+- **This repository (used for artifact evaluation):** additionally contains
+  the baselines we compare against and the one-command scripts that run all
+  experiments and reproduce the paper's figures.
 
 ## License
 
